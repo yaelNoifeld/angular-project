@@ -1,0 +1,22 @@
+<ul class="list-group" style="margin: 10%;">
+    <li *ngFor="let student of students" class="list-group-item" [ngClass]="{'list-group-item-success':student.avgMark && student.avgMark>=90,
+        'list-group-item-danger':!student.status}">
+        <div class="row">
+            <div class="col-1">{{student?.id}}</div>
+            <div class="col-1">{{student?.firstName}}</div>
+            <div class="col-1">{{student?.lastName}}</div>
+            <div class="col-1">{{student?.address}}</div>
+            <div class="col-1">{{student?.phone}}</div>
+            <div class="col-1">{{student?.avgMark}}</div>
+            <div class="col-2">
+                <button (click)="deleteStudent(student.id)" class="btn btn-outline-success">DELET STUDENT</button>
+            </div>
+            <div class="col-2">
+                <button (click)="showDetails(student)" class="btn btn-outline-success">DETAILS</button>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<app-student-details [student]="studentToShow"></app-student-details>
+<app-student-add (studnetSaving)="addNewStudentToList($event)"></app-student-add>

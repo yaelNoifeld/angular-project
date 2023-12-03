@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-body" *ngIf="boolAddStudent">
+        <form [formGroup]="studentForm">
+            <div class="form-group">
+                <label for="id">Stuent id</label>
+                <input type="number" class="form-control" id="id" [value]="studentToAdd?.id" formControlName="id">
+            </div>
+            <div class="form-group">
+                <label for="firstname">Stuent first name</label>
+                <input type="text" class="form-control" id="name" [value]="studentToAdd?.firstName" fomrControlName="firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Stuent last name</label>
+                <input type="text" class="form-control" id="name" [value]="studentToAdd?.lastName"
+                    fomrControlName="lastName">
+            </div>
+            <div class="form-group">
+                <label for="address">Stuent adress</label>
+                <input type="text" class="form-control" id="adress" [value]="studentToAdd?.address"
+                    formControlName="address">
+            </div>
+            <div class="form-group">
+                <label for="phone">Stuent phone</label>
+                <input type="tel" class="form-control" id="phone" [value]="studentToAdd?.phone" formControlName="phone">
+            </div>
+            <div class="form-group">
+                <label for="status">Stuent status</label>
+                <input type="number" class="form-control" id="status" [value]="studentToAdd?.status"
+                    fomrControlName="status">
+            </div>
+            <div class="form-group">
+                <label for="mark">Stuent mark</label>
+                <input type="number" class="form-control" id="mark" [value]="studentToAdd?.avgMark"
+                    fomrControlName="mark">
+            </div>
+            <div class="form-group">
+                <label for="profession">PROFESSION</label>
+                <br />
+                <select formControlName="profession">
+                    <option *ngFor="let item of profArr" [value]="item.id">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">yaer</label>
+                <br />
+                <input type="radio" [value]="yearTemp.first" formControlName="year" name="yaer" />first
+                <br />
+                <input type="radio" [value]="yearTemp.second" formControlName="year" name="yaer" />second
+                <br />
+                <input type="radio" [value]="yearTemp.third" formControlName="year" name="yaer" />third
+            </div>
+            {{studentForm.value|json}}<br/>
+            <button type="submit" class="btn btn-outline-success" (click)="clickSaving()">SAVE</button>
+        </form>
+    </div>
+</div>
+<button class="btn btn-outline-success" (click)="ShowAddStudent()" *ngIf="!boolAddStudent">ADD STUDENT</button>
